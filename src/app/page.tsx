@@ -207,6 +207,36 @@ class DatabaseAPI {
     // Confirmar operação local sem erros de rede
     console.log('🚀 Operação 100% local concluída com sucesso')
   }
+
+  // Sistema de configurações persistentes
+  static salvarConfiguracao(config: ConfigSistema): void {
+    try {
+      localStorage.setItem('manager_pro_config', JSON.stringify(config))
+      console.log('✅ Configurações salvas:', config)
+    } catch (error) {
+      console.error('❌ Erro ao salvar configurações:', error)
+    }
+  }
+
+  static carregarConfiguracao(): ConfigSistema {
+    try {
+      const config = localStorage.getItem('manager_pro_config')
+      if (config) {
+        return JSON.parse(config)
+      }
+    } catch (error) {
+      console.error('❌ Erro ao carregar configurações:', error)
+    }
+    
+    // Configuração padrão
+    return {
+      logoUrl: '',
+      nomeSistema: 'Manager Pro',
+      corPrimaria: '#7c3aed',
+      corSecundaria: '#a855f7',
+      mensagemCobranca: 'Olá {nome}! Seu plano {plano} vence em {dias} dias. Valor: R$ {valor}. Renove já!'
+    }
+  }
 }
 
 const planosIniciais: Plano[] = [
@@ -762,13 +792,7 @@ export default function ManagerPro() {
   const [banners, setBanners] = useState<Banner[]>([])
   const [servidores, setServidores] = useState<Servidor[]>([])
   const [planos, setPlanos] = useState<Plano[]>(planosIniciais)
-  const [configSistema, setConfigSistema] = useState<ConfigSistema>({
-    logoUrl: '',
-    nomeSistema: 'Manager Pro',
-    corPrimaria: '#7c3aed',
-    corSecundaria: '#a855f7',
-    mensagemCobranca: 'Olá {nome}! Seu plano {plano} vence em {dias} dias. Valor: R$ {valor}. Renove já!'
-  })
+  const [configSistema, setConfigSistema] = useState<ConfigSistema>(DatabaseAPI.carregarConfiguracao())
 
   // Estados de UI
   const [clienteSelecionado, setClienteSelecionado] = useState<Cliente | null>(null)
@@ -804,7 +828,6 @@ export default function ManagerPro() {
         const clientesSalvos = DatabaseAPI.carregarDados('clientes')
         const bannersSalvos = DatabaseAPI.carregarDados('banners')
         const servidoresSalvos = DatabaseAPI.carregarDados('servidores')
-        const configSalva = DatabaseAPI.carregarDados('config_sistema')[0]
 
         // Criar usuário admin padrão se não existir
         let usuariosFinais = usuariosSalvos
@@ -878,10 +901,6 @@ export default function ManagerPro() {
         setClientes(clientesFinais)
         setBanners(bannersSalvos)
         setServidores(servidoresSalvos)
-        
-        if (configSalva) {
-          setConfigSistema(configSalva)
-        }
 
         // Verificar se há usuário logado salvo (sessão persistente universal)
         const sessaoSalva = localStorage.getItem('iptv_sessao_universal')
@@ -1200,7 +1219,8 @@ export default function ManagerPro() {
   const atualizarConfig = async (novaConfig: Partial<ConfigSistema>) => {
     const configAtualizada = { ...configSistema, ...novaConfig }
     setConfigSistema(configAtualizada)
-    await DatabaseAPI.salvarDados('config_sistema', configAtualizada)
+    DatabaseAPI.salvarConfiguracao(configAtualizada)
+    console.log('✅ Configurações salvas:', configAtualizada)
   }
 
   const gerenciarUsuario = async (usuarioId: string, acao: 'ativar' | 'desativar' | 'promover' | 'rebaixar') => {
@@ -1258,7 +1278,11 @@ export default function ManagerPro() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full blur-lg opacity-50 animate-pulse"></div>
                   <div className="relative bg-gradient-to-r from-purple-600 to-blue-600 p-4 rounded-full">
-                    <Tv className="w-12 h-12 text-white" />
+                    {configSistema.logoUrl ? (
+                      <img src={configSistema.logoUrl} alt="Logo" className="w-12 h-12 rounded-full" />
+                    ) : (
+                      <Tv className="w-12 h-12 text-white" />
+                    )}
                   </div>
                 </div>
               </div>
@@ -1266,7 +1290,7 @@ export default function ManagerPro() {
               {/* Título futurista */}
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
-                  Manager Pro
+                  {configSistema.nomeSistema}
                 </h1>
                 <div className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
               </div>
@@ -1479,9 +1503,6 @@ export default function ManagerPro() {
                       <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                         <div>
                           <CardTitle className="text-white">Gerenciar Clientes</CardTitle>
-                          <CardDescription className="text-purple-200">
-                            Controle completo dos seus clientes IPTV com dados salvos no banco universal
-                          </CardDescription>
                         </div>
                         
                         <Dialog open={modalAberto} onOpenChange={setModalAberto}>
@@ -1858,9 +1879,6 @@ export default function ManagerPro() {
                   <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
                     <div>
                       <CardTitle className="text-white">Gerenciar Servidores</CardTitle>
-                      <CardDescription className="text-purple-200">
-                        Controle completo dos seus servidores IPTV com links clicáveis e descrições
-                      </CardDescription>
                     </div>
                     
                     <Dialog open={modalServidor} onOpenChange={setModalServidor}>
@@ -2153,7 +2171,7 @@ export default function ManagerPro() {
               <DialogHeader>
                 <DialogTitle>Configurações do Sistema</DialogTitle>
                 <DialogDescription className="text-slate-300">
-                  Personalize a aparência e configurações do sistema
+                  Personalize a aparência e configurações do sistema - Todas as alterações são salvas automaticamente
                 </DialogDescription>
               </DialogHeader>
               <ConfigForm 
@@ -3233,8 +3251,27 @@ function ConfigForm({ config, onSubmit, onClose }: {
     onClose()
   }
 
+  const handleImagemLogo = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (file) {
+      const reader = new FileReader()
+      reader.onload = (e) => {
+        const result = e.target?.result as string
+        setFormData({...formData, logoUrl: result})
+      }
+      reader.readAsDataURL(file)
+    }
+  }
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="bg-green-500/20 border border-green-500/50 rounded-lg p-3 mb-4">
+        <div className="flex items-center gap-2 text-green-200 text-sm">
+          <Settings className="w-4 h-4" />
+          <span>Todas as configurações são salvas automaticamente e aplicadas em tempo real</span>
+        </div>
+      </div>
+
       <div>
         <Label htmlFor="nomeSistema">Nome do Sistema</Label>
         <Input
@@ -3242,23 +3279,40 @@ function ConfigForm({ config, onSubmit, onClose }: {
           value={formData.nomeSistema}
           onChange={(e) => setFormData({...formData, nomeSistema: e.target.value})}
           className="bg-slate-700 border-slate-600 text-white"
+          placeholder="Ex: Manager Pro"
         />
       </div>
 
       <div>
-        <Label htmlFor="logoUrl">URL da Logo</Label>
-        <Input
-          id="logoUrl"
-          value={formData.logoUrl}
-          onChange={(e) => setFormData({...formData, logoUrl: e.target.value})}
-          className="bg-slate-700 border-slate-600 text-white"
-          placeholder="https://exemplo.com/logo.png"
-        />
-        {formData.logoUrl && (
-          <div className="mt-2">
-            <img src={formData.logoUrl} alt="Preview Logo" className="w-16 h-16 rounded-lg" />
+        <Label>Logo do Sistema</Label>
+        <div className="space-y-3">
+          <div>
+            <Label className="text-sm text-gray-300">📱 Enviar do Dispositivo</Label>
+            <Input
+              type="file"
+              accept="image/*"
+              onChange={handleImagemLogo}
+              className="bg-slate-700 border-slate-600 text-white file:bg-purple-600 file:text-white file:border-0 file:rounded file:px-4 file:py-2"
+            />
           </div>
-        )}
+          
+          <div>
+            <Label className="text-sm text-gray-300">🌐 URL da Logo</Label>
+            <Input
+              value={formData.logoUrl}
+              onChange={(e) => setFormData({...formData, logoUrl: e.target.value})}
+              className="bg-slate-700 border-slate-600 text-white"
+              placeholder="https://exemplo.com/logo.png"
+            />
+          </div>
+          
+          {formData.logoUrl && (
+            <div className="mt-2">
+              <Label className="text-sm text-gray-300">Preview:</Label>
+              <img src={formData.logoUrl} alt="Preview Logo" className="w-16 h-16 rounded-lg mt-1" />
+            </div>
+          )}
+        </div>
       </div>
 
       <div>
@@ -3306,7 +3360,7 @@ function ConfigForm({ config, onSubmit, onClose }: {
         </Button>
         <Button type="submit" className="bg-purple-600 hover:bg-purple-700">
           <Settings className="w-4 h-4 mr-2" />
-          Salvar no Banco Universal
+          Salvar Configurações
         </Button>
       </div>
     </form>
