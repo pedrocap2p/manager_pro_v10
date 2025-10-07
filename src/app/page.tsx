@@ -1303,13 +1303,17 @@ export default function IPTVManagerPro() {
           {temPermissao('clientes') && (
             <TabsContent value="clientes" className="space-y-6">
               <Tabs defaultValue="todos" className="space-y-6">
-                <TabsList className="grid w-full grid-cols-2 bg-[#87CEEB]/10 backdrop-blur-sm">
+                <TabsList className="grid w-full grid-cols-3 bg-[#87CEEB]/10 backdrop-blur-sm">
                   <TabsTrigger value="todos" className="text-white data-[state=active]:bg-purple-600 text-xs lg:text-sm">
                     Todos os Clientes
                   </TabsTrigger>
                   <TabsTrigger value="vencendo" className="text-white data-[state=active]:bg-purple-600 text-xs lg:text-sm">
                     <AlertTriangle className="w-4 h-4 mr-2" />
                     Vencendo (3 dias)
+                  </TabsTrigger>
+                  <TabsTrigger value="vencidos" className="text-white data-[state=active]:bg-purple-600 text-xs lg:text-sm">
+                    <AlertCircle className="w-4 h-4 mr-2" />
+                    Vencidos
                   </TabsTrigger>
                 </TabsList>
 
@@ -1544,6 +1548,137 @@ export default function IPTVManagerPro() {
                                         className="border-white/20 text-white hover:bg-white/10"
                                       >
                                         <Eye className="w-4 h-4" />
+                                      </Button>
+                                      
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => {
+                                          setClienteEditando(cliente)
+                                          setModalEditarCliente(true)
+                                        }}
+                                        className="border-blue-500/50 text-blue-400 hover:bg-blue-500/20"
+                                      >
+                                        <Edit className="w-4 h-4" />
+                                      </Button>
+                                      
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => excluirCliente(cliente.id)}
+                                        className="border-red-500/50 text-red-400 hover:bg-red-500/20"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
+                                      </Button>
+                                    </div>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            )
+                          })
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+                </TabsContent>
+
+                {/* Aba Clientes Vencidos */}
+                <TabsContent value="vencidos">
+                  <Card className="bg-[#87CEEB]/10 backdrop-blur-sm border-white/20">
+                    <CardHeader>
+                      <CardTitle className="text-white flex items-center gap-2">
+                        <AlertCircle className="w-5 h-5 text-red-400" />
+                        Clientes Vencidos
+                      </CardTitle>
+                      <CardDescription className="text-purple-200">
+                        Clientes com planos vencidos que precisam de atenção imediata
+                      </CardDescription>
+                    </CardHeader>
+                    
+                    <CardContent>
+                      <div className="space-y-4">
+                        {clientesVencidos.length === 0 ? (
+                          <div className="text-center py-8 text-gray-400">
+                            <AlertCircle className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                            <p>Nenhum cliente vencido no momento.</p>
+                          </div>
+                        ) : (
+                          clientesVencidos.map((cliente) => {
+                            const hoje = new Date()
+                            const dataVencimento = new Date(cliente.dataVencimento)
+                            const diffTime = hoje.getTime() - dataVencimento.getTime()
+                            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24))
+                            
+                            return (
+                              <Card key={cliente.id} className="bg-red-500/10 border-red-500/30">
+                                <CardContent className="p-4">
+                                  <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-4">
+                                    <div className="flex-1 space-y-2">
+                                      <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-3">
+                                        <h3 className="font-semibold text-white text-base lg:text-lg">{cliente.nome}</h3>
+                                        <Badge className="bg-red-500">
+                                          Vencido há {diffDays} dias
+                                        </Badge>
+                                        <Badge className={getStatusColor(cliente.status)}>
+                                          {cliente.status.charAt(0).toUpperCase() + cliente.status.slice(1)}
+                                        </Badge>
+                                      </div>
+                                      
+                                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 text-sm text-gray-300">
+                                        <div className="flex items-center gap-2">
+                                          <Phone className="w-4 h-4" />
+                                          WhatsApp: {cliente.whatsapp}
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                          <Calendar className="w-4 h-4" />
+                                          Venceu: {new Date(cliente.dataVencimento).toLocaleDateString('pt-BR')}
+                                        </div>
+                                      </div>
+                                      
+                                      <div className="flex flex-col lg:flex-row lg:items-center gap-2 lg:gap-4 text-sm">
+                                        <span className="text-purple-300">Plano: {cliente.plano}</span>
+                                        <span className="text-green-300">R$ {(cliente.valorMensal || 0).toFixed(2)}/mês</span>
+                                      </div>
+                                    </div>
+                                    
+                                    <div className="flex gap-2">
+                                      <Button
+                                        size="sm"
+                                        onClick={() => enviarCobrancaWhatsApp(cliente)}
+                                        className="bg-red-600 hover:bg-red-700 text-white"
+                                      >
+                                        <MessageCircle className="w-4 h-4 mr-2" />
+                                        Cobrar Urgente
+                                      </Button>
+                                      
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => setClienteSelecionado(cliente)}
+                                        className="border-white/20 text-white hover:bg-white/10"
+                                      >
+                                        <Eye className="w-4 h-4" />
+                                      </Button>
+                                      
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => {
+                                          setClienteEditando(cliente)
+                                          setModalEditarCliente(true)
+                                        }}
+                                        className="border-blue-500/50 text-blue-400 hover:bg-blue-500/20"
+                                      >
+                                        <Edit className="w-4 h-4" />
+                                      </Button>
+                                      
+                                      <Button
+                                        size="sm"
+                                        variant="outline"
+                                        onClick={() => excluirCliente(cliente.id)}
+                                        className="border-red-500/50 text-red-400 hover:bg-red-500/20"
+                                      >
+                                        <Trash2 className="w-4 h-4" />
                                       </Button>
                                     </div>
                                   </div>
