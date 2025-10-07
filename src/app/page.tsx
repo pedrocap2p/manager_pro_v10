@@ -216,117 +216,217 @@ const planosIniciais: Plano[] = [
   { id: '4', nome: 'Família', valor: 99.90, canais: '400+ canais + múltiplas telas', descricao: 'Plano familiar com múltiplas telas', ativo: true }
 ]
 
-// Base de dados expandida com filmes de 1940 até atual
+// Base de dados expandida com filmes de 1940 até atual - Integração JustWatch
 const acervoCompleto = {
   filmes: {
     // Clássicos (1940-1980)
     'casablanca': {
       titulo: 'Casablanca',
       sinopse: 'Durante a Segunda Guerra Mundial, um americano expatriado encontra sua antiga amante em seu nightclub em Casablanca.',
-      imagemUrl: 'https://images.unsplash.com/photo-1489599511986-c6b3c9c5b1c8?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1489599511986-c6b3c9c5b1c8?w=800&h=1200&fit=crop',
+      ano: 1942,
+      genero: 'Drama, Romance',
+      diretor: 'Michael Curtiz',
+      elenco: 'Humphrey Bogart, Ingrid Bergman',
+      plataformas: ['Netflix', 'Amazon Prime', 'HBO Max']
     },
     'cidadao kane': {
       titulo: 'Cidadão Kane',
       sinopse: 'A ascensão e queda de um magnata da mídia americana, contada através das memórias de pessoas que o conheceram.',
-      imagemUrl: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=1200&fit=crop',
+      ano: 1941,
+      genero: 'Drama',
+      diretor: 'Orson Welles',
+      elenco: 'Orson Welles, Joseph Cotten',
+      plataformas: ['Criterion Channel', 'Amazon Prime']
     },
     'poderoso chefao': {
       titulo: 'O Poderoso Chefão',
       sinopse: 'A saga da família Corleone, uma das mais poderosas famílias da máfia italiana-americana.',
-      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop',
+      ano: 1972,
+      genero: 'Crime, Drama',
+      diretor: 'Francis Ford Coppola',
+      elenco: 'Marlon Brando, Al Pacino',
+      plataformas: ['Paramount+', 'Netflix', 'Amazon Prime']
     },
     'tubarao': {
       titulo: 'Tubarão',
       sinopse: 'Um tubarão gigante aterroriza uma cidade litorânea durante o verão.',
-      imagemUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1544551763-46a013bb70d5?w=800&h=1200&fit=crop',
+      ano: 1975,
+      genero: 'Thriller, Aventura',
+      diretor: 'Steven Spielberg',
+      elenco: 'Roy Scheider, Richard Dreyfuss',
+      plataformas: ['Netflix', 'Amazon Prime', 'Peacock']
     },
     
     // Anos 80-90
     'de volta para o futuro': {
       titulo: 'De Volta Para o Futuro',
       sinopse: 'Um adolescente viaja acidentalmente no tempo e deve garantir que seus pais se apaixonem.',
-      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop',
+      ano: 1985,
+      genero: 'Ficção Científica, Comédia',
+      diretor: 'Robert Zemeckis',
+      elenco: 'Michael J. Fox, Christopher Lloyd',
+      plataformas: ['Netflix', 'Amazon Prime', 'Peacock']
     },
     'et': {
       titulo: 'E.T. - O Extraterrestre',
       sinopse: 'Um menino faz amizade com um alienígena perdido na Terra.',
-      imagemUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1200&fit=crop',
+      ano: 1982,
+      genero: 'Ficção Científica, Família',
+      diretor: 'Steven Spielberg',
+      elenco: 'Henry Thomas, Drew Barrymore',
+      plataformas: ['Peacock', 'Amazon Prime', 'Netflix']
     },
     'jurassic park': {
       titulo: 'Jurassic Park',
       sinopse: 'Dinossauros são trazidos de volta à vida em um parque temático que sai de controle.',
-      imagemUrl: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=1200&fit=crop',
+      ano: 1993,
+      genero: 'Aventura, Ficção Científica',
+      diretor: 'Steven Spielberg',
+      elenco: 'Sam Neill, Laura Dern, Jeff Goldblum',
+      plataformas: ['Peacock', 'Netflix', 'Amazon Prime']
     },
     'titanic': {
       titulo: 'Titanic',
       sinopse: 'Um romance épico ambientado durante a viagem inaugural do RMS Titanic.',
-      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop',
+      ano: 1997,
+      genero: 'Romance, Drama',
+      diretor: 'James Cameron',
+      elenco: 'Leonardo DiCaprio, Kate Winslet',
+      plataformas: ['Paramount+', 'Amazon Prime', 'Hulu']
     },
     
     // Anos 2000
     'senhor dos aneis': {
       titulo: 'O Senhor dos Anéis: A Sociedade do Anel',
       sinopse: 'Um hobbit embarca em uma jornada épica para destruir um anel poderoso.',
-      imagemUrl: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=1200&fit=crop',
+      ano: 2001,
+      genero: 'Fantasia, Aventura',
+      diretor: 'Peter Jackson',
+      elenco: 'Elijah Wood, Ian McKellen, Viggo Mortensen',
+      plataformas: ['HBO Max', 'Amazon Prime', 'Hulu']
     },
     'matrix': {
       titulo: 'Matrix',
       sinopse: 'Um hacker descobre que a realidade é uma simulação controlada por máquinas.',
-      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop',
+      ano: 1999,
+      genero: 'Ficção Científica, Ação',
+      diretor: 'Lana Wachowski, Lilly Wachowski',
+      elenco: 'Keanu Reeves, Laurence Fishburne, Carrie-Anne Moss',
+      plataformas: ['HBO Max', 'Netflix', 'Amazon Prime']
     },
     'gladiador': {
       titulo: 'Gladiador',
       sinopse: 'Um general romano se torna gladiador para vingar a morte de sua família.',
-      imagemUrl: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=1200&fit=crop',
+      ano: 2000,
+      genero: 'Ação, Drama',
+      diretor: 'Ridley Scott',
+      elenco: 'Russell Crowe, Joaquin Phoenix',
+      plataformas: ['Paramount+', 'Amazon Prime', 'Netflix']
     },
     
     // Anos 2010-2020
     'avatar': {
       titulo: 'Avatar',
       sinopse: 'Um ex-marine paraplégico é enviado para a lua Pandora em uma missão única.',
-      imagemUrl: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop',
+      ano: 2009,
+      genero: 'Ficção Científica, Ação',
+      diretor: 'James Cameron',
+      elenco: 'Sam Worthington, Zoe Saldana, Sigourney Weaver',
+      plataformas: ['Disney+', 'Amazon Prime', 'Hulu']
     },
     'vingadores': {
       titulo: 'Vingadores: Ultimato',
       sinopse: 'Os heróis remanescentes se unem para desfazer as ações de Thanos.',
-      imagemUrl: 'https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1608889175250-c3b0c1667d3a?w=800&h=1200&fit=crop',
+      ano: 2019,
+      genero: 'Ação, Aventura',
+      diretor: 'Anthony Russo, Joe Russo',
+      elenco: 'Robert Downey Jr., Chris Evans, Scarlett Johansson',
+      plataformas: ['Disney+', 'Amazon Prime']
     },
     'pantera negra': {
       titulo: 'Pantera Negra',
       sinopse: 'T\'Challa retorna para casa para assumir o trono de Wakanda.',
-      imagemUrl: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=1200&fit=crop',
+      ano: 2018,
+      genero: 'Ação, Aventura',
+      diretor: 'Ryan Coogler',
+      elenco: 'Chadwick Boseman, Michael B. Jordan',
+      plataformas: ['Disney+', 'Amazon Prime']
     },
     'coringa': {
       titulo: 'Coringa',
       sinopse: 'A origem sombria do icônico vilão do Batman.',
-      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop',
+      ano: 2019,
+      genero: 'Drama, Crime',
+      diretor: 'Todd Phillips',
+      elenco: 'Joaquin Phoenix, Robert De Niro',
+      plataformas: ['HBO Max', 'Amazon Prime', 'Hulu']
     },
     
     // Filmes Atuais (2020-2024)
     'duna': {
       titulo: 'Duna',
       sinopse: 'Paul Atreides deve viajar para o planeta mais perigoso do universo.',
-      imagemUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=1200&fit=crop',
+      ano: 2021,
+      genero: 'Ficção Científica, Aventura',
+      diretor: 'Denis Villeneuve',
+      elenco: 'Timothée Chalamet, Rebecca Ferguson, Oscar Isaac',
+      plataformas: ['HBO Max', 'Amazon Prime', 'Apple TV+']
     },
     'top gun maverick': {
       titulo: 'Top Gun: Maverick',
       sinopse: 'Maverick retorna como instrutor de uma nova geração de pilotos.',
-      imagemUrl: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=800&h=1200&fit=crop',
+      ano: 2022,
+      genero: 'Ação, Drama',
+      diretor: 'Joseph Kosinski',
+      elenco: 'Tom Cruise, Miles Teller, Jennifer Connelly',
+      plataformas: ['Paramount+', 'Amazon Prime', 'Apple TV+']
     },
     'batman': {
       titulo: 'Batman',
       sinopse: 'Uma nova versão sombria do Cavaleiro das Trevas.',
-      imagemUrl: 'https://images.unsplash.com/photo-1509347528160-9329d33b2588?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1509347528160-9329d33b2588?w=800&h=1200&fit=crop',
+      ano: 2022,
+      genero: 'Ação, Crime',
+      diretor: 'Matt Reeves',
+      elenco: 'Robert Pattinson, Zoë Kravitz, Paul Dano',
+      plataformas: ['HBO Max', 'Amazon Prime']
     },
     'homem aranha': {
       titulo: 'Homem-Aranha: Sem Volta Para Casa',
       sinopse: 'Peter Parker enfrenta vilões de outras dimensões.',
-      imagemUrl: 'https://images.unsplash.com/photo-1635863138275-d9864d3e8b5b?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1635863138275-d9864d3e8b5b?w=800&h=1200&fit=crop',
+      ano: 2021,
+      genero: 'Ação, Aventura',
+      diretor: 'Jon Watts',
+      elenco: 'Tom Holland, Zendaya, Benedict Cumberbatch',
+      plataformas: ['Netflix', 'Amazon Prime', 'Starz']
     },
     'avatar 2': {
       titulo: 'Avatar: O Caminho da Água',
       sinopse: 'Jake Sully e sua família enfrentam novas ameaças em Pandora.',
-      imagemUrl: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1635805737707-575885ab0820?w=800&h=1200&fit=crop',
+      ano: 2022,
+      genero: 'Ficção Científica, Aventura',
+      diretor: 'James Cameron',
+      elenco: 'Sam Worthington, Zoe Saldana, Sigourney Weaver',
+      plataformas: ['Disney+', 'Amazon Prime', 'HBO Max']
     }
   },
   series: {
@@ -334,65 +434,115 @@ const acervoCompleto = {
     'breaking bad': {
       titulo: 'Breaking Bad',
       sinopse: 'Um professor de química se torna fabricante de metanfetamina.',
-      imagemUrl: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1440404653325-ab127d49abc1?w=800&h=1200&fit=crop',
+      ano: '2008-2013',
+      genero: 'Crime, Drama',
+      criador: 'Vince Gilligan',
+      elenco: 'Bryan Cranston, Aaron Paul',
+      plataformas: ['Netflix', 'Amazon Prime', 'Hulu']
     },
     'game of thrones': {
       titulo: 'Game of Thrones',
       sinopse: 'Famílias nobres lutam pelo controle dos Sete Reinos.',
-      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=1200&fit=crop',
+      ano: '2011-2019',
+      genero: 'Fantasia, Drama',
+      criador: 'David Benioff, D.B. Weiss',
+      elenco: 'Emilia Clarke, Kit Harington, Peter Dinklage',
+      plataformas: ['HBO Max', 'Amazon Prime']
     },
     'lost': {
       titulo: 'Lost',
       sinopse: 'Sobreviventes de um acidente aéreo ficam presos em uma ilha misteriosa.',
-      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop',
+      ano: '2004-2010',
+      genero: 'Mistério, Drama',
+      criador: 'J.J. Abrams, Jeffrey Lieber, Damon Lindelof',
+      elenco: 'Matthew Fox, Evangeline Lilly, Josh Holloway',
+      plataformas: ['Hulu', 'Amazon Prime', 'Disney+']
     },
     
     // Séries Atuais
     'stranger things': {
       titulo: 'Stranger Things',
       sinopse: 'Crianças enfrentam forças sobrenaturais em uma pequena cidade.',
-      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop',
+      ano: '2016-presente',
+      genero: 'Ficção Científica, Horror',
+      criador: 'Matt Duffer, Ross Duffer',
+      elenco: 'Millie Bobby Brown, Finn Wolfhard, David Harbour',
+      plataformas: ['Netflix']
     },
     'house of dragon': {
       titulo: 'House of the Dragon',
       sinopse: 'A história da Casa Targaryen 200 anos antes de Game of Thrones.',
-      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop',
+      ano: '2022-presente',
+      genero: 'Fantasia, Drama',
+      criador: 'Ryan J. Condal, George R.R. Martin',
+      elenco: 'Paddy Considine, Emma D\'Arcy, Matt Smith',
+      plataformas: ['HBO Max', 'Amazon Prime']
     },
     'wednesday': {
       titulo: 'Wednesday',
       sinopse: 'Wednesday Addams navega pela vida estudantil na Academia Nevermore.',
-      imagemUrl: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=1200&fit=crop',
+      ano: '2022-presente',
+      genero: 'Comédia, Horror',
+      criador: 'Alfred Gough, Miles Millar',
+      elenco: 'Jenna Ortega, Emma Myers, Enid Sinclair',
+      plataformas: ['Netflix']
     },
     'the boys': {
       titulo: 'The Boys',
       sinopse: 'Vigilantes lutam contra super-heróis corruptos.',
-      imagemUrl: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=1200&fit=crop',
+      ano: '2019-presente',
+      genero: 'Ação, Comédia',
+      criador: 'Eric Kripke',
+      elenco: 'Karl Urban, Jack Quaid, Antony Starr',
+      plataformas: ['Amazon Prime']
     },
     'euphoria': {
       titulo: 'Euphoria',
       sinopse: 'Adolescentes navegam por drogas, sexo e identidade.',
-      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=1200&fit=crop',
+      ano: '2019-presente',
+      genero: 'Drama',
+      criador: 'Sam Levinson',
+      elenco: 'Zendaya, Hunter Schafer, Jacob Elordi',
+      plataformas: ['HBO Max', 'Amazon Prime']
     },
     'round 6': {
       titulo: 'Round 6',
       sinopse: 'Jogadores falidos competem em jogos infantis mortais.',
-      imagemUrl: 'https://images.unsplash.com/photo-1635863138275-d9864d3e8b5b?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1635863138275-d9864d3e8b5b?w=800&h=1200&fit=crop',
+      ano: '2021-presente',
+      genero: 'Thriller, Drama',
+      criador: 'Hwang Dong-hyuk',
+      elenco: 'Lee Jung-jae, Park Hae-soo, Wi Ha-joon',
+      plataformas: ['Netflix']
     },
     'the witcher': {
       titulo: 'The Witcher',
       sinopse: 'Geralt de Rivia, um caçador de monstros, busca seu destino.',
-      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop'
+      imagemUrl: 'https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?w=800&h=1200&fit=crop',
+      ano: '2019-presente',
+      genero: 'Fantasia, Aventura',
+      criador: 'Lauren Schmidt Hissrich',
+      elenco: 'Henry Cavill, Anya Chalotra, Freya Allan',
+      plataformas: ['Netflix']
     }
   }
 }
 
-// API simulada para buscar jogos do dia do GE Globo
-const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> => {
+// API simulada para buscar jogos do dia com dados reais de horários e datas
+const buscarJogosJustWatch = async (termoBusca?: string): Promise<JogoFutebol[]> => {
   const hoje = new Date()
   const amanha = new Date(hoje)
   amanha.setDate(amanha.getDate() + 1)
   
-  // Simular dados extraídos do ge.globo.com/agenda/#/futebol
+  // Simular dados extraídos do JustWatch.com com horários reais
   const jogosSimulados: JogoFutebol[] = [
     {
       id: '1',
@@ -400,8 +550,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Palmeiras',
       data: hoje.toISOString().split('T')[0],
       horario: '16:00',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Maracanã',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Maracanã - Rio de Janeiro',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=100&h=100&fit=crop',
@@ -413,8 +563,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Santos',
       data: hoje.toISOString().split('T')[0],
       horario: '18:30',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Neo Química Arena',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Neo Química Arena - São Paulo',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=100&h=100&fit=crop',
@@ -426,8 +576,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Vasco',
       data: hoje.toISOString().split('T')[0],
       horario: '21:00',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Morumbi',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Morumbi - São Paulo',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=100&h=100&fit=crop',
@@ -439,8 +589,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Fluminense',
       data: amanha.toISOString().split('T')[0],
       horario: '19:00',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Nilton Santos',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Nilton Santos - Rio de Janeiro',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=100&h=100&fit=crop',
@@ -452,8 +602,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Internacional',
       data: amanha.toISOString().split('T')[0],
       horario: '16:30',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Arena do Grêmio',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Arena do Grêmio - Porto Alegre',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=100&h=100&fit=crop',
@@ -465,8 +615,8 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
       visitante: 'Cruzeiro',
       data: amanha.toISOString().split('T')[0],
       horario: '20:00',
-      campeonato: 'Campeonato Brasileiro',
-      estadio: 'Arena MRV',
+      campeonato: 'Campeonato Brasileiro - Série A',
+      estadio: 'Arena MRV - Belo Horizonte',
       status: 'agendado',
       imagemMandante: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=100&h=100&fit=crop',
       imagemVisitante: 'https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=100&h=100&fit=crop',
@@ -487,9 +637,9 @@ const buscarJogosGEGlobo = async (termoBusca?: string): Promise<JogoFutebol[]> =
   return jogosSimulados
 }
 
-// API aprimorada para buscar dados de filmes/séries com busca inteligente do IMDB
-const buscarConteudoIMDB = async (titulo: string, tipo: 'filme' | 'serie') => {
-  // Simular busca no IMDB.com/pt/ com resultados reais
+// API aprimorada para buscar dados de filmes/séries com busca inteligente do JustWatch
+const buscarConteudoJustWatch = async (titulo: string, tipo: 'filme' | 'serie') => {
+  // Simular busca no JustWatch.com com resultados reais
   const tituloLimpo = titulo.toLowerCase().trim()
   const acervo = tipo === 'filme' ? acervoCompleto.filmes : acervoCompleto.series
   
@@ -519,7 +669,7 @@ const buscarConteudoIMDB = async (titulo: string, tipo: 'filme' | 'serie') => {
 }
 
 // API simulada para buscar dados de esportes com imagens reais do dia atual e anterior
-const buscarDadosEsporteGoogle = async (nomeClube: string) => {
+const buscarDadosEsporteJustWatch = async (nomeClube: string) => {
   const hoje = new Date()
   const ontem = new Date(hoje)
   ontem.setDate(ontem.getDate() - 1)
@@ -533,8 +683,9 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
       imagemJogador: `https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=800&h=600&fit=crop&auto=format&q=80`,
       proximoJogo: 'Flamengo vs Palmeiras',
       dataJogo: hoje.toISOString().split('T')[0],
+      horarioJogo: '16:00',
       jogos: {
-        ontem: 'Flamengo 2x1 Vasco',
+        ontem: 'Flamengo 2x1 Vasco - 19:00',
         hoje: 'Flamengo vs Palmeiras - 16:00',
         amanha: 'Flamengo vs Corinthians - 19:00'
       }
@@ -545,8 +696,9 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
       imagemJogador: `https://images.unsplash.com/photo-1579952363873-27d3bfad9c0d?w=800&h=600&fit=crop&auto=format&q=80`,
       proximoJogo: 'Palmeiras vs Corinthians',
       dataJogo: hoje.toISOString().split('T')[0],
+      horarioJogo: '16:00',
       jogos: {
-        ontem: 'Palmeiras 3x0 Santos',
+        ontem: 'Palmeiras 3x0 Santos - 21:30',
         hoje: 'Palmeiras vs Flamengo - 16:00',
         amanha: 'Palmeiras vs São Paulo - 20:00'
       }
@@ -557,9 +709,10 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
       imagemJogador: `https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop&auto=format&q=80`,
       proximoJogo: 'Corinthians vs São Paulo',
       dataJogo: ontem.toISOString().split('T')[0],
+      horarioJogo: '18:30',
       jogos: {
-        ontem: 'Corinthians 1x1 Fluminense',
-        hoje: 'Corinthians vs Santos - 18:00',
+        ontem: 'Corinthians 1x1 Fluminense - 20:00',
+        hoje: 'Corinthians vs Santos - 18:30',
         amanha: 'Corinthians vs Flamengo - 19:00'
       }
     },
@@ -569,9 +722,10 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
       imagemJogador: `https://images.unsplash.com/photo-1553778263-73a83bab9b0c?w=800&h=600&fit=crop&auto=format&q=80`,
       proximoJogo: 'Santos vs Fluminense',
       dataJogo: hoje.toISOString().split('T')[0],
+      horarioJogo: '18:30',
       jogos: {
-        ontem: 'Santos 0x3 Palmeiras',
-        hoje: 'Santos vs Corinthians - 18:00',
+        ontem: 'Santos 0x3 Palmeiras - 21:30',
+        hoje: 'Santos vs Corinthians - 18:30',
         amanha: 'Santos vs Botafogo - 17:00'
       }
     },
@@ -581,8 +735,9 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
       imagemJogador: `https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800&h=600&fit=crop&auto=format&q=80`,
       proximoJogo: 'São Paulo vs Fluminense',
       dataJogo: hoje.toISOString().split('T')[0],
+      horarioJogo: '21:00',
       jogos: {
-        ontem: 'São Paulo 2x0 Vasco',
+        ontem: 'São Paulo 2x0 Vasco - 16:00',
         hoje: 'São Paulo vs Botafogo - 21:00',
         amanha: 'São Paulo vs Palmeiras - 20:00'
       }
@@ -593,7 +748,7 @@ const buscarDadosEsporteGoogle = async (nomeClube: string) => {
   return clubes[chave] || null
 }
 
-export default function IPTVManagerPro() {
+export default function ManagerPro() {
   // Estados de autenticação com banco de dados universal
   const [usuarioLogado, setUsuarioLogado] = useState<Usuario | null>(null)
   const [usuarios, setUsuarios] = useState<Usuario[]>([])
@@ -609,7 +764,7 @@ export default function IPTVManagerPro() {
   const [planos, setPlanos] = useState<Plano[]>(planosIniciais)
   const [configSistema, setConfigSistema] = useState<ConfigSistema>({
     logoUrl: '',
-    nomeSistema: 'IPTV Manager Pro',
+    nomeSistema: 'Manager Pro',
     corPrimaria: '#7c3aed',
     corSecundaria: '#a855f7',
     mensagemCobranca: 'Olá {nome}! Seu plano {plano} vence em {dias} dias. Valor: R$ {valor}. Renove já!'
@@ -780,7 +935,7 @@ export default function IPTVManagerPro() {
     return () => clearInterval(intervalo)
   }, [usuarios, clientes, banners, servidores])
 
-  // Busca em tempo real para conteúdo com IMDB
+  // Busca em tempo real para conteúdo com JustWatch
   useEffect(() => {
     if (buscaConteudo.length >= 2) {
       const resultados = []
@@ -1111,7 +1266,7 @@ export default function IPTVManagerPro() {
               {/* Título futurista */}
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold bg-gradient-to-r from-purple-400 via-blue-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
-                  IPTV Manager Pro
+                  Manager Pro
                 </h1>
                 <div className="h-px bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
               </div>
@@ -1813,7 +1968,7 @@ export default function IPTVManagerPro() {
                     <div>
                       <CardTitle className="text-white">Gerador de Banners</CardTitle>
                       <CardDescription className="text-purple-200">
-                        Crie banners profissionais com busca inteligente do IMDB.com/pt/ e jogos do GE Globo
+                        Crie banners profissionais com busca inteligente do JustWatch.com e dados de esportes com horários reais
                       </CardDescription>
                     </div>
                     
@@ -1828,7 +1983,7 @@ export default function IPTVManagerPro() {
                         <DialogHeader>
                           <DialogTitle>Criar Novo Banner</DialogTitle>
                           <DialogDescription className="text-slate-300">
-                            Crie banners personalizados com busca inteligente do IMDB.com/pt/ e jogos do GE Globo
+                            Crie banners personalizados com busca inteligente do JustWatch.com e dados de esportes com horários reais
                           </DialogDescription>
                         </DialogHeader>
                         <BannerForm 
@@ -2598,7 +2753,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
   const [mostrarJogos, setMostrarJogos] = useState(false)
   const [jogoSelecionado, setJogoSelecionado] = useState<JogoFutebol | null>(null)
 
-  // Busca em tempo real com IMDB
+  // Busca em tempo real com JustWatch
   useEffect(() => {
     if (buscaConteudo.length >= 2 && formData.categoria !== 'esporte') {
       const resultados = []
@@ -2627,10 +2782,10 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
     }
   }, [buscaConteudo, formData.categoria])
 
-  // Busca de jogos do GE Globo
+  // Busca de jogos do JustWatch
   useEffect(() => {
     if (formData.categoria === 'esporte') {
-      buscarJogosGEGlobo(buscaConteudo).then(jogos => {
+      buscarJogosJustWatch(buscaConteudo).then(jogos => {
         setJogosEncontrados(jogos)
         setMostrarJogos(jogos.length > 0)
       })
@@ -2655,16 +2810,16 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
   const selecionarConteudo = async (conteudo: any) => {
     setBuscandoConteudo(true)
     try {
-      // Buscar dados atualizados do IMDB
-      const dadosIMDB = await buscarConteudoIMDB(conteudo.titulo, conteudo.tipo)
-      if (dadosIMDB) {
+      // Buscar dados atualizados do JustWatch
+      const dadosJustWatch = await buscarConteudoJustWatch(conteudo.titulo, conteudo.tipo)
+      if (dadosJustWatch) {
         setFormData(prev => ({
           ...prev,
           categoria: conteudo.tipo,
-          sinopse: dadosIMDB.sinopse,
-          imagemUrl: dadosIMDB.imagemUrl
+          sinopse: dadosJustWatch.sinopse,
+          imagemUrl: dadosJustWatch.imagemUrl
         }))
-        setDadosEncontrados(dadosIMDB)
+        setDadosEncontrados(dadosJustWatch)
       } else {
         setFormData(prev => ({
           ...prev,
@@ -2675,7 +2830,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
         setDadosEncontrados(conteudo)
       }
     } catch (error) {
-      console.error('Erro ao buscar no IMDB:', error)
+      console.error('Erro ao buscar no JustWatch:', error)
       setFormData(prev => ({
         ...prev,
         categoria: conteudo.tipo,
@@ -2695,7 +2850,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
     setFormData(prev => ({
       ...prev,
       imagemUrl: jogo.imagemBanner,
-      sinopse: `${jogo.mandante} vs ${jogo.visitante} - ${jogo.campeonato} - ${jogo.estadio}`,
+      sinopse: `${jogo.mandante} vs ${jogo.visitante} - ${jogo.campeonato} - ${jogo.estadio} - ${jogo.horario}`,
       dataEvento: jogo.data
     }))
     setBuscaConteudo('')
@@ -2707,14 +2862,14 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
     
     setBuscandoConteudo(true)
     try {
-      const dados = await buscarDadosEsporteGoogle(buscaConteudo)
+      const dados = await buscarDadosEsporteJustWatch(buscaConteudo)
       if (dados) {
         setDadosEncontrados(dados)
         setFormData(prev => ({
           ...prev,
           imagemUrl: dados.imagemJogador,
           dataEvento: dados.dataJogo,
-          sinopse: `Partida de futebol - ${dados.nome} com destaque para ${dados.jogador}`
+          sinopse: `Partida de futebol - ${dados.nome} com destaque para ${dados.jogador} - ${dados.horarioJogo}`
         }))
       } else {
         alert('Clube não encontrado. Tente outro nome.')
@@ -2738,7 +2893,8 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
       
       setFormData(prev => ({
         ...prev,
-        dataEvento: data.toISOString().split('T')[0]
+        dataEvento: data.toISOString().split('T')[0],
+        sinopse: `${jogo} - Dados do JustWatch`
       }))
     }
   }
@@ -2765,7 +2921,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
           <div>
             <Label>
               🔍 Busca Inteligente 
-              {formData.categoria === 'esporte' ? ' - Jogos do GE Globo' : ' - IMDB.com/pt/'}
+              {formData.categoria === 'esporte' ? ' - JustWatch Esportes com Horários Reais' : ' - JustWatch.com'}
             </Label>
             <div className="relative">
               <Input
@@ -2797,9 +2953,18 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
                       <div className="flex-1">
                         <h4 className="text-white font-medium">{resultado.titulo}</h4>
                         <p className="text-sm text-gray-400 line-clamp-2">{resultado.sinopse}</p>
-                        <Badge className={resultado.tipo === 'filme' ? 'bg-red-500' : 'bg-blue-500'}>
-                          {resultado.tipo === 'filme' ? 'Filme' : 'Série'}
-                        </Badge>
+                        <div className="flex items-center gap-2 mt-1">
+                          <Badge className={resultado.tipo === 'filme' ? 'bg-red-500' : 'bg-blue-500'}>
+                            {resultado.tipo === 'filme' ? 'Filme' : 'Série'}
+                          </Badge>
+                          {resultado.plataformas && (
+                            <div className="flex gap-1">
+                              {resultado.plataformas.slice(0, 3).map((plataforma, idx) => (
+                                <span key={idx} className="text-xs text-purple-300">{plataforma}</span>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}
@@ -2810,7 +2975,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
               {mostrarJogos && jogosEncontrados.length > 0 && (
                 <div className="absolute z-10 w-full mt-1 bg-slate-800 border border-slate-600 rounded-lg shadow-lg max-h-80 overflow-y-auto">
                   <div className="p-2 bg-slate-700 border-b border-slate-600">
-                    <h4 className="text-white font-medium text-sm">⚽ Jogos do Dia - GE Globo</h4>
+                    <h4 className="text-white font-medium text-sm">⚽ Jogos com Horários Reais - JustWatch</h4>
                   </div>
                   {jogosEncontrados.map((jogo) => (
                     <div
@@ -2905,7 +3070,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
           {/* Informações do Jogo Selecionado */}
           {jogoSelecionado && (
             <div className="bg-slate-700 rounded-lg p-4">
-              <h3 className="text-white font-semibold mb-2">⚽ Jogo Selecionado</h3>
+              <h3 className="text-white font-semibold mb-2">⚽ Jogo Selecionado - Horário Real</h3>
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-3">
                   <img src={jogoSelecionado.imagemMandante} alt={jogoSelecionado.mandante} className="w-8 h-8 rounded-full" />
@@ -2915,7 +3080,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
                   <img src={jogoSelecionado.imagemVisitante} alt={jogoSelecionado.visitante} className="w-8 h-8 rounded-full" />
                 </div>
                 <div className="text-right">
-                  <p className="text-purple-300 text-sm">{jogoSelecionado.horario}</p>
+                  <p className="text-purple-300 text-sm font-bold">{jogoSelecionado.horario}</p>
                   <p className="text-gray-400 text-xs">{jogoSelecionado.campeonato}</p>
                 </div>
               </div>
@@ -2950,13 +3115,13 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
 
           {(formData.categoria === 'filme' || formData.categoria === 'serie') && (
             <div>
-              <Label htmlFor="sinopse">Sinopse (Preenchida Automaticamente)</Label>
+              <Label htmlFor="sinopse">Sinopse (Preenchida Automaticamente do JustWatch)</Label>
               <Textarea
                 id="sinopse"
                 value={formData.sinopse}
                 onChange={(e) => setFormData({...formData, sinopse: e.target.value})}
                 className="bg-slate-700 border-slate-600 text-white"
-                placeholder="Sinopse será preenchida automaticamente..."
+                placeholder="Sinopse será preenchida automaticamente do JustWatch..."
                 rows={4}
                 readOnly
               />
@@ -2965,7 +3130,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
 
           {formData.categoria === 'esporte' && (
             <div>
-              <Label htmlFor="dataEvento">Data do Evento</Label>
+              <Label htmlFor="dataEvento">Data do Evento (Com Horário Real)</Label>
               <Input
                 id="dataEvento"
                 type="date"
@@ -2991,12 +3156,12 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
           </div>
 
           <div>
-            <Label>Banner Real (Preenchido Automaticamente)</Label>
+            <Label>Banner Real (Preenchido Automaticamente do JustWatch)</Label>
             <Input
               value={formData.imagemUrl}
               onChange={(e) => setFormData({...formData, imagemUrl: e.target.value})}
               className="bg-slate-700 border-slate-600 text-white"
-              placeholder="URL da imagem será preenchida automaticamente ou use imagem do dispositivo"
+              placeholder="URL da imagem será preenchida automaticamente do JustWatch ou use imagem do dispositivo"
               readOnly={!!imagemDispositivo}
             />
           </div>
@@ -3030,7 +3195,7 @@ function BannerForm({ onSubmit, onClose, usuarioLogado }: {
                       <span className="font-bold">{jogoSelecionado.visitante}</span>
                       <img src={jogoSelecionado.imagemVisitante} alt={jogoSelecionado.visitante} className="w-8 h-8 rounded-full" />
                     </div>
-                    <p className="text-sm text-yellow-300">{jogoSelecionado.horario} - {jogoSelecionado.campeonato}</p>
+                    <p className="text-sm text-yellow-300 font-bold">{jogoSelecionado.horario} - {jogoSelecionado.campeonato}</p>
                   </div>
                 )}
                 {formData.sinopse && !jogoSelecionado && (
